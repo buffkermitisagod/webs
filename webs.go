@@ -1,6 +1,11 @@
 package webs
 
-import "fmt"
+import (
+	"fmt"
+	"webs/mod/server"
+
+	"github.com/buffkermitisagod/webs/mod/server"
+)
 
 // global data sets
 type Path_static_template struct {
@@ -38,4 +43,10 @@ func Path_static(path, file string) {
 
 	// update the paths_static var
 	paths_static = append(paths_static, tmp)
+}
+
+func Run(ip_port string) {
+	server.Set_vars(paths_static)
+	server.Start(":8080")
+
 }
